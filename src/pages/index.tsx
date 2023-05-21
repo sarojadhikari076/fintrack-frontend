@@ -1,6 +1,9 @@
 import Head from 'next/head'
 import { Inter } from 'next/font/google'
-import { Button, Container } from '@chakra-ui/react'
+import { Container } from '@chakra-ui/react'
+import Navbar from '@/components/Navbar'
+import BudgetPlan from '@/components/BudgetPlan'
+import Expenses from '@/components/Expenses'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,8 +17,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Container maxW="container.xl" className={inter.className}>
-        <Button>Click me</Button>
+      <Navbar />
+      <Container py={4} maxW="container.xl" className={inter.className}>
+        <BudgetPlan />
+        <Expenses />
       </Container>
     </>
   )
