@@ -1,4 +1,5 @@
-import { Box, Button, HStack, Heading } from '@chakra-ui/react'
+import { Box, HStack, Heading } from '@chakra-ui/react'
+import BudgetPlanModal from './BudgetPlanModal'
 
 const budgetItems = [
   {
@@ -25,21 +26,26 @@ const budgetItems = [
 
 export default function BudgetPlan() {
   return (
-    <Box mb={12}>
-      <HStack mb={8} gap={4}>
+    <Box mb={16}>
+      <HStack mb={5} gap={4}>
         <Heading size="md">My budget plan</Heading>
-        <Button colorScheme="blue" variant="outline" px={8} size="sm">
-          Edit
-        </Button>
+        <BudgetPlanModal />
       </HStack>
 
-      <HStack justify="space-between" wrap="wrap">
+      <HStack justify="space-between" wrap="wrap" gap={5}>
         {budgetItems.map(({ _id, name, value }) => (
-          <HStack key={_id} p={5} gap={12} rounded="md" bg="blue.500">
+          <HStack
+            key={_id}
+            p={5}
+            flex={1}
+            justify="space-between"
+            rounded="md"
+            bg="blue.500"
+          >
             <Heading size="xs" color="gray.300">
               {name}
             </Heading>
-            <Heading size="md" color="white">
+            <Heading size="lg" color="white">
               {value}
             </Heading>
           </HStack>

@@ -1,4 +1,6 @@
-import { Box, Button, HStack, Heading, Input } from '@chakra-ui/react'
+import { Box, Button, HStack, Heading, Input, Select } from '@chakra-ui/react'
+import ExpenseFilter from './ExpenseFilter'
+import ExpenseTable from './ExpenseTable'
 
 export default function Expenses() {
   return (
@@ -9,9 +11,8 @@ export default function Expenses() {
           Add
         </Button>
       </HStack>
-      <Box>
-        <Input placeholder="Search your expenses..." />
-      </Box>
+      <ExpenseFilter />
+      <ExpenseTable />
     </Box>
   )
 }

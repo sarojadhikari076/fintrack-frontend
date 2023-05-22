@@ -18,7 +18,7 @@ export default function Home() {
       </Head>
 
       <Navbar />
-      <Container py={4} maxW="container.xl" className={inter.className}>
+      <Container py={10} maxW="container.xl" className={inter.className}>
         <BudgetPlan />
         <Expenses />
       </Container>
