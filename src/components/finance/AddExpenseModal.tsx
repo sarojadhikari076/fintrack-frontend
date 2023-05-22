@@ -67,7 +67,7 @@ export default function AddExpenseModal() {
 
             <FormControl isInvalid>
               <FormLabel>Remarks</FormLabel>
-              <Input placeholder="Went to watch Bahubali 2" />
+              <Input placeholder="e.g. Went to watch Bahubali 2" />
               <FormErrorMessage>
                 Remarks should be at least 3 characters
               </FormErrorMessage>

@@ -1,3 +1,5 @@
+import { expenditureList } from '@/constants/finance'
+import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
 import {
   TableContainer,
   Table,
@@ -6,88 +8,23 @@ import {
   Tr,
   Th,
   Tbody,
-  Td
+  Td,
+  IconButton
 } from '@chakra-ui/react'
+import { formatDate } from '../utils/date'
 
-const expenditureList = [
-  {
-    _id: '1',
-    name: 'Groceries',
-    price: 50.25,
-    category: 'Food',
-    remarks: 'Weekly grocery shopping'
-  },
-  {
-    _id: '2',
-    name: 'Movie ticket',
-    price: 12.5,
-    category: 'Entertainment',
-    remarks: 'Watched a new release'
-  },
-  {
-    _id: '3',
-    name: 'Gas bill',
-    price: 30.75,
-    category: 'Utilities',
-    remarks: 'Monthly gas bill payment'
-  },
-  {
-    _id: '4',
-    name: 'Restaurant dinner',
-    price: 65.0,
-    category: 'Food',
-    remarks: 'Celebrated a special occasion'
-  },
-  {
-    _id: '5',
-    name: 'Clothing',
-    price: 45.99,
-    category: 'Shopping',
-    remarks: 'Bought new summer clothes'
-  },
-  {
-    _id: '6',
-    name: 'Gym membership',
-    price: 80.0,
-    category: 'Fitness',
-    remarks: 'Monthly gym subscription'
-  },
-  {
-    _id: '7',
-    name: 'Mobile phone bill',
-    price: 45.5,
-    category: 'Utilities',
-    remarks: 'Monthly phone bill payment'
-  },
-  {
-    _id: '8',
-    name: 'Concert ticket',
-    price: 75.0,
-    category: 'Entertainment',
-    remarks: 'Attended a live concert'
-  },
-  {
-    _id: '9',
-    name: 'Coffee',
-    price: 4.75,
-    category: 'Food',
-    remarks: 'Bought coffee on the way to work'
-  },
-  {
-    _id: '10',
-    name: 'Books',
-    price: 22.99,
-    category: 'Shopping',
-    remarks: 'Purchased new novels'
-  },
-  {
-    _id: '11',
-    name: 'Car wash',
-    price: 15.0,
-    category: 'Automotive',
-    remarks: 'Got the car cleaned'
-  }
-]
+function ActionButtons() {
+  return (
+    <>
+      <IconButton aria-label="Edit" size="xs" colorScheme="yellow" isRound>
+        <EditIcon />
+      </IconButton>
+      <IconButton aria-label="Delete" size="xs" colorScheme="red" isRound>
+        <DeleteIcon />
+      </IconButton>
+    </>
+  )
+}
 
 export default function ExpenseTable() {
   return (
@@ -96,21 +33,31 @@ export default function ExpenseTable() {
         <TableCaption>My expenditure list</TableCaption>
         <Thead>
           <Tr>
+            <Th>S.N.</Th>
             <Th>Name</Th>
             <Th>Cost</Th>
             <Th>Category</Th>
+            <Th>Date</Th>
             <Th>Remarks</Th>
+            <Th>Actions</Th>
           </Tr>
         </Thead>
         <Tbody>
-          {expenditureList.map(({ _id, category, name, price, remarks }) => (
-            <Tr key={_id}>
-              <Td>{name}</Td>
-              <Td>${price}</Td>
-              <Td>{category}</Td>
-              <Td>{remarks}</Td>
-            </Tr>
-          ))}
+          {expenditureList.map(
+            ({ _id, category, name, price, createdAt, remarks }, idx) => (
+              <Tr key={_id}>
+                <Td>{idx + 1}</Td>
+                <Td>{name}</Td>
+                <Td>${price}</Td>
+                <Td>{category}</Td>
+                <Td>{formatDate(createdAt)}</Td>
+                <Td>{remarks}</Td>
+                <Td display="flex" gap={2}>
+                  <ActionButtons />
+                </Td>
+              </Tr>
+            )
+          )}
         </Tbody>
       </Table>
     </TableContainer>
