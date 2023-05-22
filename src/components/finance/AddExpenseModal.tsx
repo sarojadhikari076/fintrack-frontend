@@ -11,11 +11,11 @@ import {
   ModalFooter,
   FormControl,
   FormLabel,
-  Input,
   VStack,
   FormErrorMessage,
   Select
 } from '@chakra-ui/react'
+import CustomInputGroup from '../common/CustomInputGroup'
 
 export default function AddExpenseModal() {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -39,19 +39,18 @@ export default function AddExpenseModal() {
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody as={VStack} spacing={3} my={4}>
-            <FormControl isInvalid>
-              <FormLabel>Name</FormLabel>
-              <Input placeholder="e.g. Buy a movie ticket" />
-              <FormErrorMessage>
-                Name should be at least 3 characters
-              </FormErrorMessage>
-            </FormControl>
-
-            <FormControl isInvalid>
-              <FormLabel>Price</FormLabel>
-              <Input placeholder="e.g. $5" />
-              <FormErrorMessage>Price should be at least $1</FormErrorMessage>
-            </FormControl>
+            <CustomInputGroup
+              name="name"
+              placeholder="e.g. Buy a movie ticket"
+              label="Name"
+              error="Name should be at least 3 characters"
+            />
+            <CustomInputGroup
+              name="price"
+              placeholder="e.g. $5"
+              label="Price"
+              error="Price should be at least $1"
+            />
 
             <FormControl isInvalid>
               <FormLabel>Category</FormLabel>
@@ -65,13 +64,12 @@ export default function AddExpenseModal() {
               <FormErrorMessage>Please select a category</FormErrorMessage>
             </FormControl>
 
-            <FormControl isInvalid>
-              <FormLabel>Remarks</FormLabel>
-              <Input placeholder="e.g. Went to watch Bahubali 2" />
-              <FormErrorMessage>
-                Remarks should be at least 3 characters
-              </FormErrorMessage>
-            </FormControl>
+            <CustomInputGroup
+              name="remarks"
+              placeholder="e.g. Went to watch Bahubali 2"
+              label="Price"
+              error="Remarks should be at least 3 characters"
+            />
           </ModalBody>
 
           <ModalFooter borderTop="1px solid #DDD">
