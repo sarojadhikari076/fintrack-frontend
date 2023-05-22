@@ -1,38 +1,5 @@
+import { categoryOption, expenseDateOptions } from '@/constants/finance'
 import { HStack, Input, Select } from '@chakra-ui/react'
-
-const expenseDateOptions = [
-  {
-    label: 'Monthly',
-    value: 'MONTH'
-  },
-  {
-    label: 'Weekly',
-    value: 'WEEK'
-  },
-  {
-    label: 'Daily',
-    value: 'DAY'
-  }
-]
-
-const categoryOption = [
-  {
-    label: 'Electricity bill',
-    value: 'ELECTRICITY'
-  },
-  {
-    label: 'Rent',
-    value: 'RENT'
-  },
-  {
-    label: 'Clothings',
-    value: 'CLOTH'
-  },
-  {
-    label: 'Miscellaneous',
-    value: 'MISC'
-  }
-]
 
 export default function ExpenseFilter() {
   return (

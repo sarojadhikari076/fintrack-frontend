@@ -106,7 +106,7 @@ export default function ExpenseTable() {
           {expenditureList.map(({ _id, category, name, price, remarks }) => (
             <Tr key={_id}>
               <Td>{name}</Td>
-              <Td>$ {price}</Td>
+              <Td>${price}</Td>
               <Td>{category}</Td>
               <Td>{remarks}</Td>
             </Tr>

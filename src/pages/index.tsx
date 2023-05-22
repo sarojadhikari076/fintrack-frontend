@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import { Container } from '@chakra-ui/react'
-import Navbar from '@/components/Navbar'
-import BudgetPlan from '@/components/BudgetPlan'
-import Expenses from '@/components/Expenses'
+import Navbar from '@/components/common/Navbar'
+import BudgetPlan from '@/components/finance/BudgetPlan'
+import Expenses from '@/components/finance/Expenses'
 
 const inter = Inter({ subsets: ['latin'] })
 
