@@ -2,14 +2,7 @@ import { EXPENDITURE, FINANCE } from '@/constants/routes'
 import { IExpenditure, IFinancePlan } from '@/interfaces/finance'
 import { FieldName, FilterQuery } from '@/interfaces/searchFilter'
 import { get } from '@/services/http'
-import {
-  Dispatch,
-  SetStateAction,
-  createContext,
-  useContext,
-  useEffect,
-  useState
-} from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 
 interface FinanceState {
   isFetching: boolean
@@ -53,7 +46,8 @@ const FinanceProvider: React.FC<FinanceProviderProps> = ({ children }) => {
   const [filterQuery, setFilterQuery] = useState<FilterQuery>({
     date: '',
     q: '',
-    category: ''
+    category: '',
+    sort: 'createdAt:-1'
   })
 
   const updateFilterQuery = (field: FieldName, value: string | number) => {

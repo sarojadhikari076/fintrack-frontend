@@ -61,9 +61,9 @@ export default function BudgetPlanModal() {
   useEffect(() => {
     // IFFE for updating values everytime it changes
     ;(async () => {
-      await setFieldValue('income', income)
       await setFieldValue('savings', savings)
       await setFieldValue('expenseBudget', expenseBudget)
+      await setFieldValue('income', income)
       await setFieldValue('investments', investments)
     })()
   }, [expenseBudget, income, investments, savings, setFieldValue])

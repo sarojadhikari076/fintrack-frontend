@@ -1,11 +1,15 @@
-import { expenseCategories, expenseDateOptions } from '@/constants/finance'
+import {
+  expenseCategories,
+  expenseDateOptions,
+  sortOptions
+} from '@/constants/finance'
 import { useFinance } from '@/hooks/useFinance'
 import { FieldName } from '@/interfaces/searchFilter'
 import { HStack, Input, Select } from '@chakra-ui/react'
 
 export default function ExpenseFilter() {
   const {
-    filterQuery: { category, date, q },
+    filterQuery: { category, date, q, sort },
     updateFilterQuery
   } = useFinance()
 
@@ -42,6 +46,20 @@ export default function ExpenseFilter() {
       >
         {expenseCategories.map((label) => (
           <option value={label} key={label}>
+            {label}
+          </option>
+        ))}
+      </Select>
+      <Select
+        placeholder="Sort by"
+        maxW={['auto', null, 'max']}
+        value={sort}
+        onChange={({ target: { value } }) =>
+          updateFilterQuery(FieldName.Sort, value)
+        }
+      >
+        {sortOptions.map(({ label, value }) => (
+          <option value={value} key={label}>
             {label}
           </option>
         ))}

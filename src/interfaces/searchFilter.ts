@@ -1,7 +1,8 @@
 export enum FieldName {
   Date = 'date',
   Q = 'q',
-  Category = 'category'
+  Category = 'category',
+  Sort = 'sort'
 }
 
 export type FilterQuery = {

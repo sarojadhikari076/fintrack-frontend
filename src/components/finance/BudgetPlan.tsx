@@ -39,21 +39,14 @@ export default function BudgetPlan() {
 
       <HStack justify="space-between" wrap="wrap" gap={5}>
         {budgetItems.map(({ _id, name, value }) => (
-          <HStack
-            key={_id}
-            p={5}
-            flex={1}
-            justify="space-between"
-            rounded="md"
-            bg="blue.500"
-          >
+          <Box key={_id} p={5} flex={1} rounded="md" bg="blue.500">
             <Heading size="xs" color="gray.300">
               {name}
             </Heading>
             <Heading size="lg" color="white">
               ${value}
             </Heading>
-          </HStack>
+          </Box>
         ))}
       </HStack>
     </Box>
