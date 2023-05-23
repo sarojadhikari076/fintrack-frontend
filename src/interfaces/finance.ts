@@ -1,6 +1,7 @@
 // TypeScript types for finance-related data
 export interface IFinancePlan {
   _id: string
+  __v: string
   user: string
   createdAt: Date
   expenseBudget: number
@@ -12,6 +13,7 @@ export interface IFinancePlan {
 
 export interface IExpenditure {
   _id: string
+  __v: string
   user: string
   name: string
   price: number
@@ -19,4 +21,10 @@ export interface IExpenditure {
   remarks: string
   createdAt: Date
   updatedAt: Date
+}
+
+export enum FileType {
+  XLSX,
+  CSV,
+  PDF
 }

@@ -1,14 +1,14 @@
 export const expenseDateOptions = [
   {
-    label: 'Monthly',
+    label: 'This month',
     value: 'MONTH'
   },
   {
-    label: 'Weekly',
+    label: 'This week',
     value: 'WEEK'
   },
   {
-    label: 'Daily',
+    label: 'Today',
     value: 'DAY'
   }
 ]

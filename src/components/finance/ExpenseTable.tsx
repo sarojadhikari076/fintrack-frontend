@@ -92,7 +92,9 @@ export default function ExpenseTable() {
                 <Td>${price}</Td>
                 <Td>{category}</Td>
                 <Td>{formatDate(createdAt)}</Td>
-                <Td>{remarks}</Td>
+                <Td maxW="xs" isTruncated>
+                  {remarks || '--'}
+                </Td>
                 <Td display="flex" gap={2}>
                   <ActionButtons expenseId={_id} />
                 </Td>

@@ -46,7 +46,6 @@ export default function RegisterPage() {
           showToast(message, 'success')
         } catch (error) {
           showToast(parseAxiosError(error), 'error')
-          console.log(error)
         }
       },
       validationSchema: registerSchema,

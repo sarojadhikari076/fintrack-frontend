@@ -23,8 +23,8 @@ export default function ExpenseFilter() {
         }
       />
       <Select
-        placeholder="Select date range"
-        maxW={['auto', null, 'max']}
+        placeholder="Date"
+        maxW={40}
         value={date}
         onChange={({ target: { value } }) =>
           updateFilterQuery(FieldName.Date, value)
@@ -37,8 +37,8 @@ export default function ExpenseFilter() {
         ))}
       </Select>
       <Select
-        placeholder="Select category"
-        maxW={['auto', null, 'max']}
+        placeholder="Category"
+        maxW={40}
         value={category}
         onChange={({ target: { value } }) =>
           updateFilterQuery(FieldName.Category, value)
@@ -52,7 +52,7 @@ export default function ExpenseFilter() {
       </Select>
       <Select
         placeholder="Sort by"
-        maxW={['auto', null, 'max']}
+        maxW={40}
         value={sort}
         onChange={({ target: { value } }) =>
           updateFilterQuery(FieldName.Sort, value)
