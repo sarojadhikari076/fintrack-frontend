@@ -5,7 +5,7 @@ import { ACCESS_TOKEN } from '@/constants/text'
 import { useAuth } from '@/hooks/useAuth'
 import useCustomToast from '@/hooks/useCustomToast'
 import { AuthState } from '@/interfaces/user'
-import loginSchema from '@/schemas/loginSchema'
+import registerSchema from '@/schemas/registerSchema'
 import { post } from '@/services/http'
 import { parseAxiosError } from '@/utils/axios'
 import {
@@ -21,7 +21,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const { replace } = useRouter()
   const { updateUser, authState } = useAuth()
   const { showToast } = useCustomToast()
@@ -29,13 +29,15 @@ export default function LoginPage() {
   const { errors, getFieldProps, handleSubmit, isValid, isSubmitting } =
     useFormik({
       initialValues: {
+        name: '',
         email: '',
-        password: ''
+        password: '',
+        confirmPassword: ''
       },
       onSubmit: async (data) => {
         try {
           const { user, token, message } = await post({
-            endpoint: LOGIN,
+            endpoint: REGISTER,
             data
           })
 
@@ -48,7 +50,7 @@ export default function LoginPage() {
           console.log(error)
         }
       },
-      validationSchema: loginSchema,
+      validationSchema: registerSchema,
       validateOnMount: false,
       validateOnBlur: true,
       validateOnChange: true
@@ -59,28 +61,38 @@ export default function LoginPage() {
   }, [authState, replace])
 
   if (authState === AuthState.AUTHENTICATING) return null
-
   return (
     <>
-      <NextHead title="Login" description="Login to proceed with FinTrack" />
+      <NextHead
+        title="Register"
+        description="Register to create a FinTrack account"
+      />
       <Box
         mx="auto"
         p={10}
-        mt={32}
-        maxW="md"
+        mt={8}
+        maxW="lg"
         rounded="md"
         shadow="md"
         border="1px solid #EEE"
       >
         <Heading size="md" mb={4}>
-          Please login to proceed with&nbsp;
+          Please register to create a&nbsp;
           <Box as="span" color="blue.600">
             FinTrack
           </Box>
+          &nbsp;account
         </Heading>
 
         <form onSubmit={handleSubmit}>
           <VStack spacing={3}>
+            <CustomInputGroup
+              {...getFieldProps('name')}
+              type="text"
+              placeholder="e.g. John Doe"
+              label="Name"
+              error={errors.name}
+            />
             <CustomInputGroup
               {...getFieldProps('email')}
               type="email"
@@ -95,6 +107,13 @@ export default function LoginPage() {
               label="Password"
               error={errors.password}
             />
+            <CustomInputGroup
+              {...getFieldProps('confirmPassword')}
+              type="password"
+              placeholder="e.g. Confirm password"
+              label="Confirm Password"
+              error={errors.confirmPassword}
+            />
             <Button
               colorScheme="blue"
               w="full"
@@ -102,12 +121,12 @@ export default function LoginPage() {
               isDisabled={!isValid || isSubmitting}
               isLoading={isSubmitting}
             >
-              Login
+              Register
             </Button>
             <Text>
-              Don&quot;t have an account?&nbsp;
-              <ChakraLink as={Link} color="blue.500" href={REGISTER}>
-                Register
+              Already have an account?&nbsp;
+              <ChakraLink as={Link} color="blue.500" href={LOGIN}>
+                Login
               </ChakraLink>
             </Text>
           </VStack>

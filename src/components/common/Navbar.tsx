@@ -1,10 +1,10 @@
-import { LOGIN } from '@/constants/routes'
+import { useAuth } from '@/hooks/useAuth'
+import { AuthState } from '@/interfaces/user'
 import { Box, Button, Container, Heading } from '@chakra-ui/react'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 
 export default function Navbar() {
-  const { replace } = useRouter()
+  const { logout, authState } = useAuth()
   return (
     <Box
       shadow="md"
@@ -22,8 +22,8 @@ export default function Navbar() {
         <Heading size="lg" color="blue.800" as={Link} href="/">
           FinTrack
         </Heading>
-        <Button colorScheme="red" onClick={() => replace(LOGIN)}>
-          Log out
+        <Button colorScheme="red" onClick={logout}>
+          {authState === AuthState.AUTHENTICATED ? 'Log out' : 'Login'}
         </Button>
       </Container>
     </Box>
