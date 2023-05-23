@@ -31,7 +31,7 @@ export default function BudgetPlan() {
   ]
 
   return (
-    <Box mb={16}>
+    <Box mb={10}>
       <HStack mb={5} gap={4}>
         <Heading size="md">My budget plan</Heading>
         <BudgetPlanModal />

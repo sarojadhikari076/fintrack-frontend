@@ -10,8 +10,12 @@ import {
   Td,
   IconButton
 } from '@chakra-ui/react'
-import { formatDate } from '../../utils/date'
+import { formatDate } from '@/utils/date'
 import { useFinance } from '@/hooks/useFinance'
+import { remove } from '@/services/http'
+import { EXPENDITURE } from '@/constants/routes'
+import useCustomToast from '@/hooks/useCustomToast'
+import { parseAxiosError } from '@/utils/axios'
 
 const tableHeader = [
   'S.N.',
@@ -23,13 +27,41 @@ const tableHeader = [
   'Actions'
 ]
 
-function ActionButtons() {
+function ActionButtons({ expenseId }: { expenseId: string }) {
+  const { deleteExpenditure, updateFinance } = useFinance()
+  const { showToast } = useCustomToast()
+
+  async function handleDeleteExpense() {
+    try {
+      const { message, financePlan } = await remove({
+        endpoint: `${EXPENDITURE}/${expenseId}`
+      })
+
+      deleteExpenditure(expenseId)
+      updateFinance(financePlan)
+
+      showToast(message, 'success')
+    } catch (error) {
+      showToast(parseAxiosError(error), 'error')
+    }
+  }
+
+  function handleEditExpense() {
+    // TODO: Need to implement edit expense.
+  }
+
   return (
     <>
       <IconButton aria-label="Edit" size="xs" colorScheme="yellow" isRound>
         <EditIcon />
       </IconButton>
-      <IconButton aria-label="Delete" size="xs" colorScheme="red" isRound>
+      <IconButton
+        aria-label="Delete"
+        size="xs"
+        colorScheme="red"
+        isRound
+        onClick={handleDeleteExpense}
+      >
         <DeleteIcon />
       </IconButton>
     </>
@@ -39,7 +71,7 @@ function ActionButtons() {
 export default function ExpenseTable() {
   const { expenditures } = useFinance()
 
-  // TODO: Add loading state of the table
+  // TODO: Add UI for loading and empty states of the table
   return (
     <TableContainer border="1px solid #DDD" rounded="md">
       <Table variant="striped" colorScheme="blue">
@@ -62,7 +94,7 @@ export default function ExpenseTable() {
                 <Td>{formatDate(createdAt)}</Td>
                 <Td>{remarks}</Td>
                 <Td display="flex" gap={2}>
-                  <ActionButtons />
+                  <ActionButtons expenseId={_id} />
                 </Td>
               </Tr>
             )
@@ -70,5 +102,6 @@ export default function ExpenseTable() {
         </Tbody>
       </Table>
     </TableContainer>
+    // TODO: Need to implement pagination/infinite scrolling
   )
 }

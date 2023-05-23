@@ -1,7 +1,15 @@
 import { EXPENDITURE, FINANCE } from '@/constants/routes'
 import { IExpenditure, IFinancePlan } from '@/interfaces/finance'
+import { FieldName, FilterQuery } from '@/interfaces/searchFilter'
 import { get } from '@/services/http'
-import { createContext, useContext, useEffect, useState } from 'react'
+import {
+  Dispatch,
+  SetStateAction,
+  createContext,
+  useContext,
+  useEffect,
+  useState
+} from 'react'
 
 interface FinanceState {
   isFetching: boolean
@@ -11,9 +19,11 @@ interface FinanceState {
 
 interface FinanceContextProps extends FinanceState {
   updateExpenditure: (data: IExpenditure) => void
+  deleteExpenditure: (expenseId: string) => void
   updateFinance: (data: IFinancePlan) => void
   getFinance: () => void
-  deleteFinance: (id: string) => void
+  filterQuery: FilterQuery
+  updateFilterQuery: (field: FieldName, val: string | number) => void
 }
 
 const FinanceContext = createContext<FinanceContextProps>(
@@ -40,9 +50,23 @@ const FinanceProvider: React.FC<FinanceProviderProps> = ({ children }) => {
     {} as IFinancePlan
   )
   const [expenditures, setExpenditures] = useState<IExpenditure[]>([])
+  const [filterQuery, setFilterQuery] = useState<FilterQuery>({
+    date: '',
+    q: '',
+    category: ''
+  })
+
+  const updateFilterQuery = (field: FieldName, value: string | number) => {
+    setFilterQuery((prev) => ({ ...prev, [field]: value }))
+  }
 
   const updateExpenditure = (data: IExpenditure) => {
     setExpenditures((prev) => [data, ...prev])
+  }
+
+  const deleteExpenditure = (expenseId: string) => {
+    const remainingExp = expenditures.filter(({ _id }) => _id !== expenseId)
+    setExpenditures(remainingExp)
   }
 
   const updateFinance = (data: IFinancePlan) => {
@@ -53,32 +77,48 @@ const FinanceProvider: React.FC<FinanceProviderProps> = ({ children }) => {
     try {
       setIsFetching(true)
       const { financePlan } = await get({ endpoint: FINANCE })
-      const { expenditures } = await get({ endpoint: EXPENDITURE })
       setFinancePlan(financePlan)
-      setExpenditures(expenditures)
     } catch (error) {
-      console.log('ERROR FETCHING FINANCE: ', error)
     } finally {
       setIsFetching(false)
     }
-  }
-
-  const deleteFinance = (id: string) => {
-    // Implementation for deleting a finance plan
   }
 
   useEffect(() => {
     getFinance()
   }, [])
 
+  useEffect(() => {
+    // IFFE to fetch expenditures list every time the query parameters change
+    ;(async () => {
+      try {
+        setIsFetching(true)
+        const { expenditures } = await get({
+          endpoint: EXPENDITURE,
+          config: {
+            params: {
+              ...filterQuery
+            }
+          }
+        })
+        setExpenditures(expenditures)
+      } catch (error) {
+      } finally {
+        setIsFetching(false)
+      }
+    })()
+  }, [filterQuery])
+
   const financeContextValue: FinanceContextProps = {
     isFetching,
     financePlan,
     expenditures,
     updateExpenditure,
+    deleteExpenditure,
     updateFinance,
     getFinance,
-    deleteFinance
+    filterQuery,
+    updateFilterQuery
   }
 
   return (

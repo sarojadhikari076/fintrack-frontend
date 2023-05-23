@@ -13,21 +13,24 @@ export const expenseDateOptions = [
   }
 ]
 
-export const categoryOption = [
-  {
-    label: 'Electricity bill',
-    value: 'ELECTRICITY'
-  },
-  {
-    label: 'Rent',
-    value: 'RENT'
-  },
-  {
-    label: 'Clothings',
-    value: 'CLOTH'
-  },
-  {
-    label: 'Miscellaneous',
-    value: 'MISC'
-  }
+export const expenseCategories = [
+  'Rent/Mortgage',
+  'Utilities',
+  'Groceries/Food',
+  'Transportation',
+  'Insurance',
+  'Debt Payments',
+  'Entertainment/Leisure',
+  'Education/Books',
+  'Clothing/Apparel',
+  'Health/Medical expenses',
+  'Travel/Vacation',
+  'Gifts/Donations',
+  'Home Maintenance/Repairs',
+  'Personal Care',
+  'Communication',
+  'Subscriptions',
+  'Taxes',
+  'Childcare/Education expenses',
+  'Miscellaneous/Other'
 ]

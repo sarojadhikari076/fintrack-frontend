@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react'
 import { useFormik } from 'formik'
 import CustomInputGroup from '../common/CustomInputGroup'
-import { categoryOption } from '@/constants/finance'
+import { expenseCategories } from '@/constants/finance'
 import addExpenditureSchema from '@/schemas/addExpenditureSchema'
 import { post } from '@/services/http'
 import { EXPENDITURE } from '@/constants/routes'
@@ -108,8 +108,8 @@ export default function AddExpenseModal() {
                   placeholder="Select category"
                   {...getFieldProps('category')}
                 >
-                  {categoryOption.map(({ label, value }) => (
-                    <option value={value} key={label}>
+                  {expenseCategories.map((label) => (
+                    <option value={label} key={label}>
                       {label}
                     </option>
                   ))}
