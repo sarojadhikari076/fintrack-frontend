@@ -23,17 +23,24 @@ Finance Tracker(FinTrack) is a web application built with Next.js and Typescript
 - Export report: Users can export their finance data to PDF, CSV or XLSX format.
 - Responsive Design: The entire application is designed to be responsive, ensuring a seamless user experience across different screen sizes and devices.
 
+### Screenshots
+<img width="1512" alt="image" src="https://github.com/sarojadhikari076/fintrack-frontend/assets/54130119/bc923041-a8e1-4341-a283-b50585bef8f1">
+<img width="1512" alt="image" src="https://github.com/sarojadhikari076/fintrack-frontend/assets/54130119/802ba35b-6c77-42bd-be45-99eacd683fac">
+<img width="1512" alt="image" src="https://github.com/sarojadhikari076/fintrack-frontend/assets/54130119/521daa02-3a4a-483a-b1f3-24a60c38cc08">
+<img width="1512" alt="image" src="https://github.com/sarojadhikari076/fintrack-frontend/assets/54130119/4efa3ed9-c087-4e43-8608-af9f152c9f25">
+<img width="1512" alt="image" src="https://github.com/sarojadhikari076/fintrack-frontend/assets/54130119/1c56c52d-75ff-47e6-b462-c4aa4ed270a3">
+
 ## Deployment
 
-The Finance Tracker app is deployed on Vercel and can be accessed at [https://fintrackapp.vercel.app](https://fintrackapp.vercel.app).
+The Finance Tracker app is deployed on Vercel and can be accessed at [Fintrack](https://fintrackapp.vercel.app).
 
 To run the application locally:
 
-1. Clone the repository: `git clone https://github.com/your-username/finance-tracker.git`
+1. Clone the repository: `git clone https://github.com/sarojadhikari076/fintrack-frontend.git`
 2. Install dependencies: `cd finance-tracker` and `npm install`
 3. Set up environment variables: Create a `.env` file in the root directory and add necessary environment variables (e.g., API endpoint, database credentials).
-4. Start the development server: `npm run dev`
-5. Open the application in your browser at `http://localhost:3000`
+4. Start the development server: `yarn dev`
+5. Open the application in your browser at `http://localhost:4000`
 
 ## Contributing
 
