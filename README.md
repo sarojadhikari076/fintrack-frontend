@@ -1,38 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Finance Tracker
 
-## Getting Started
+Finance Tracker(FinTrack) is a web application built with Next.js and Typescript. It allows users to track their finances, manage daily expenses, and monitor their budgets. The app provides features such as user authentication, CRUD operations for finance data and expenses, sorting, filtering, searching, and pagination. The application is designed to be responsive and works seamlessly across various device screen sizes.
 
-First, run the development server:
+## Technologies Used
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- Next.js - A React framework for building server-side rendered and statically generated applications.
+- Typescript - A statically typed superset of JavaScript that provides improved tooling and code quality.
+- Chakra UI - A flexible and accessible UI component library for React applications.
+- Axios - A popular HTTP client library for making API requests.
+- Formik - A library for building forms in React with easy state management and validation.
+- Yup - A schema validation library used in conjunction with Formik for form validation.
+- XLSX - A library for reading, writing, and manipulating Excel files.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- User Authentication: Users can sign up, log in, and securely authenticate themselves to access their finance tracking dashboard.
+- Finance Data Management: Users can add, update, and delete finance data, including income, investments, savings, and expense budgets.
+- Daily Expense Tracking: Users can record their daily expenses, including the name, price, category, and remarks for each expenditure.
+- Sorting and Filtering: Users can sort and filter their finance data and expenses based on various criteria, such as date, category, and price.
+- Search: Users can search for specific finance data or expenses using keywords or phrases.
+- Pagination: To handle large datasets, the app provides pagination functionality to display finance data and expenses in manageable chunks.
+- Responsive Design: The entire application is designed to be responsive, ensuring a seamless user experience across different screen sizes and devices.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Deployment
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+The Finance Tracker app is deployed on Vercel and can be accessed at [https://fintrackapp.vercel.app](https://fintrackapp.vercel.app).
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+To run the application locally:
 
-## Learn More
+1. Clone the repository: `git clone https://github.com/your-username/finance-tracker.git`
+2. Install dependencies: `cd finance-tracker` and `npm install`
+3. Set up environment variables: Create a `.env` file in the root directory and add necessary environment variables (e.g., API endpoint, database credentials).
+4. Start the development server: `npm run dev`
+5. Open the application in your browser at `http://localhost:3000`
 
-To learn more about Next.js, take a look at the following resources:
+## Contributing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Contributions to the Finance Tracker project are welcome! If you encounter any issues or have suggestions for improvements, please create an issue in the GitHub repository.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The Finance Tracker app is open source and released under the [MIT License](https://opensource.org/licenses/MIT).
