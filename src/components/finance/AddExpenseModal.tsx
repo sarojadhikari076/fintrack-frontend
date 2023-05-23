@@ -135,7 +135,7 @@ export default function AddExpenseModal() {
                 isLoading={isSubmitting}
                 isDisabled={!isValid || isSubmitting}
               >
-                Update plan
+                Add expense
               </Button>
             </ModalFooter>
           </form>
