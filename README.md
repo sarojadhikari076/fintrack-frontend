@@ -20,6 +20,7 @@ Finance Tracker(FinTrack) is a web application built with Next.js and Typescript
 - Sorting and Filtering: Users can sort and filter their finance data and expenses based on various criteria, such as date, category, and price.
 - Search: Users can search for specific finance data or expenses using keywords or phrases.
 - Pagination: To handle large datasets, the app provides pagination functionality to display finance data and expenses in manageable chunks.
+- Export report: Users can export their finance data to PDF, CSV or XLSX format.
 - Responsive Design: The entire application is designed to be responsive, ensuring a seamless user experience across different screen sizes and devices.
 
 ## Deployment
