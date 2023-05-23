@@ -29,6 +29,8 @@ Finance Tracker(FinTrack) is a web application built with Next.js and Typescript
 <img width="1512" alt="image" src="https://github.com/sarojadhikari076/fintrack-frontend/assets/54130119/521daa02-3a4a-483a-b1f3-24a60c38cc08">
 <img width="1512" alt="image" src="https://github.com/sarojadhikari076/fintrack-frontend/assets/54130119/4efa3ed9-c087-4e43-8608-af9f152c9f25">
 <img width="1512" alt="image" src="https://github.com/sarojadhikari076/fintrack-frontend/assets/54130119/1c56c52d-75ff-47e6-b462-c4aa4ed270a3">
+<img width="1512" alt="image" src="https://github.com/sarojadhikari076/fintrack-frontend/assets/54130119/b796a927-9306-4bc5-89d8-4d13f335a87e">
+<img width="1512" alt="image" src="https://github.com/sarojadhikari076/fintrack-frontend/assets/54130119/30d2be8d-442b-497e-ada2-08d48068f425">
 
 ## Deployment
 
