@@ -8,6 +8,8 @@ import { AuthState } from '@/interfaces/user'
 import { useRouter } from 'next/router'
 import { LOGIN } from '@/constants/routes'
 import { useAuth } from '@/hooks/useAuth'
+import UserCard from '@/components/user/UserCard'
+import { FinanceProvider } from '@/hooks/useFinance'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,8 +26,11 @@ export default function Home() {
     <>
       <NextHead title="Home" description="Finance tracker app" />
       <Box className={inter.className}>
-        <BudgetPlan />
-        <Expenses />
+        <FinanceProvider>
+          <UserCard />
+          <BudgetPlan />
+          <Expenses />
+        </FinanceProvider>
       </Box>
     </>
   )

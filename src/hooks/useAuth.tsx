@@ -1,5 +1,7 @@
+import { ME } from '@/constants/routes'
 import { ACCESS_TOKEN } from '@/constants/text'
 import { AuthState, IUser } from '@/interfaces/user'
+import { get } from '@/services/http'
 import React, { createContext, useContext, useEffect, useState } from 'react'
 
 interface AuthContextProps {
@@ -16,7 +18,7 @@ interface AuthProviderProps {
 const AuthContext = createContext<AuthContextProps | undefined>(undefined)
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [authState, setAuthState] = useState(AuthState.UNAUTHENTICATED)
+  const [authState, setAuthState] = useState(AuthState.AUTHENTICATING)
   const [user, setUser] = useState<IUser | null>(null)
 
   const updateUser = (userData: IUser) => {
@@ -30,19 +32,28 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     localStorage.removeItem(ACCESS_TOKEN)
   }
 
+  const getMe = async () => {
+    try {
+      const { user } = await get({ endpoint: ME })
+      setUser(user)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    if (localStorage.getItem(ACCESS_TOKEN)) {
+      setAuthState(AuthState.AUTHENTICATED)
+      getMe()
+    } else setAuthState(AuthState.UNAUTHENTICATED)
+  }, [])
+
   const authContextValue: AuthContextProps = {
     authState,
     user,
     updateUser,
     logout
   }
-
-  useEffect(() => {
-    console.log('first')
-    if (localStorage.getItem(ACCESS_TOKEN))
-      setAuthState(AuthState.AUTHENTICATED)
-    else setAuthState(AuthState.UNAUTHENTICATED)
-  }, [])
 
   return (
     <AuthContext.Provider value={authContextValue}>

@@ -42,7 +42,6 @@ export default function LoginPage() {
           localStorage.setItem(ACCESS_TOKEN, token)
           updateUser(user)
           showToast(message, 'success')
-          replace(HOME)
         } catch (error) {
           showToast(parseAxiosError(error), 'error')
           console.log(error)

@@ -1,4 +1,3 @@
-import { expenditureList } from '@/constants/finance'
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
 import {
   TableContainer,
@@ -11,7 +10,18 @@ import {
   Td,
   IconButton
 } from '@chakra-ui/react'
-import { formatDate } from '../utils/date'
+import { formatDate } from '../../utils/date'
+import { useFinance } from '@/hooks/useFinance'
+
+const tableHeader = [
+  'S.N.',
+  'Name',
+  'Price',
+  'Category',
+  'Date',
+  'Remarks',
+  'Actions'
+]
 
 function ActionButtons() {
   return (
@@ -27,23 +37,22 @@ function ActionButtons() {
 }
 
 export default function ExpenseTable() {
+  const { expenditures } = useFinance()
+
+  // TODO: Add loading state of the table
   return (
     <TableContainer border="1px solid #DDD" rounded="md">
       <Table variant="striped" colorScheme="blue">
         <TableCaption>My expenditure list</TableCaption>
         <Thead>
           <Tr>
-            <Th>S.N.</Th>
-            <Th>Name</Th>
-            <Th>Cost</Th>
-            <Th>Category</Th>
-            <Th>Date</Th>
-            <Th>Remarks</Th>
-            <Th>Actions</Th>
+            {tableHeader.map((label) => (
+              <Th key={label}>{label}</Th>
+            ))}
           </Tr>
         </Thead>
         <Tbody>
-          {expenditureList.map(
+          {expenditures.map(
             ({ _id, category, name, price, createdAt, remarks }, idx) => (
               <Tr key={_id}>
                 <Td>{idx + 1}</Td>

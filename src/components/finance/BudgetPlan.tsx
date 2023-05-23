@@ -1,30 +1,35 @@
 import { Box, HStack, Heading } from '@chakra-ui/react'
 import BudgetPlanModal from './BudgetPlanModal'
-
-const budgetItems = [
-  {
-    _id: '1',
-    name: 'Income',
-    value: '$5000'
-  },
-  {
-    _id: '2',
-    name: 'Expense budget',
-    value: '$2000'
-  },
-  {
-    _id: '3',
-    name: 'Savings',
-    value: '$1000'
-  },
-  {
-    _id: '4',
-    name: 'Investments',
-    value: '$1000'
-  }
-]
+import { useFinance } from '@/hooks/useFinance'
 
 export default function BudgetPlan() {
+  const {
+    financePlan: { income, expenseBudget, savings, investments }
+  } = useFinance()
+
+  const budgetItems = [
+    {
+      _id: '1',
+      name: 'Income',
+      value: income
+    },
+    {
+      _id: '2',
+      name: 'Expense budget',
+      value: expenseBudget
+    },
+    {
+      _id: '3',
+      name: 'Savings',
+      value: savings
+    },
+    {
+      _id: '4',
+      name: 'Investments',
+      value: investments
+    }
+  ]
+
   return (
     <Box mb={16}>
       <HStack mb={5} gap={4}>
@@ -46,7 +51,7 @@ export default function BudgetPlan() {
               {name}
             </Heading>
             <Heading size="lg" color="white">
-              {value}
+              ${value}
             </Heading>
           </HStack>
         ))}
